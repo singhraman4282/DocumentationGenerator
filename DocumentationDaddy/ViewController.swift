@@ -8,10 +8,23 @@
 import UIKit
 
 class ViewController: UIViewController {
+  
+  
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
+    
+    let extractor = DocumentationExtractor(fileName: "publicationfactory")
+    // let extractor = DocumentationExtractor(fileName: "navigator")
+    let publication = DocumentationExtractor(fileName: "publicationfactory")
+      .createDocumentationForClass()
+    
+    let navigator = DocumentationExtractor(fileName: "navigator")
+      .createDocumentationForClass()
+    
+    DocumentationGenerator.writeToFile([publication, navigator])
+    
+    
   }
 
 
